@@ -1,0 +1,22 @@
+include<stdio.h>
+void main()
+
+{
+
+      int nums[10], target, n, res1, res2;
+      scanf("%d", &n);
+      for(int i=0;i<n;i++)
+      scanf("%d", &nums[i]);
+      printf("\nEnter target ");
+      scanf("%d", &target);
+      for(int i=0;i<n;i++)
+      for(int j=i+1;j<n;j++)
+      if(nums[i]+nums[j] == target)
+      {
+          res1=i;
+          res2=j;
+          break;
+      }
+
+      printf("%d %d", res1, res2);
+}
