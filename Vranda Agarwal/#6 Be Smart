@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter no. of elements : ";
+    cin>>n;
+    int a[20];
+    int i,j;
+    cout<<"Enter the elements : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    //squaring the elements
+    for(i=0;i<n;i++)
+    {
+        a[i]=a[i]*a[i];
+    }
+    int temp;
+    //ascending order...bubble sort
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]>a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    cout<<"Elements in sorted order are : ";
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    cout<<"\n";
+    return 0;
+}
