@@ -1,0 +1,36 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+#include <map>
+using namespace std;
+
+int main() {
+	// your code goes here
+	vector<int> numbers,result;
+	int target,n, d;
+	cin>>n;
+	cin>>target;
+	for(int i=0;i<n;i++)
+	{
+	    cin>>d;
+	    numbers.push_back(d);
+	}
+	unordered_map<int,int> hash;
+	for (int i = 0; i < numbers.size(); i++) {
+		int numberToFind = target - numbers[i];
+            //if numberToFind is found in map, return them
+		if (hash.find(numberToFind) != hash.end()) {
+            //+1 because indices are NOT zero based
+			result.push_back(hash[numberToFind] + 1);
+			result.push_back(i + 1);
+			break;
+		}
+            //number was not found. Put it in the map.
+		hash[numbers[i]] = i;
+	}
+	for(int i=0;i<result.size();i++)
+	{
+	    cout<<result[i]<<" ";
+	}
+	return 0;
+}
