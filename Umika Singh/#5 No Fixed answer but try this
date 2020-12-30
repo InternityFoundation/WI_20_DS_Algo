@@ -1,0 +1,40 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+#include <queue>
+#include <deque>
+
+template <typename T, int MaxLen, typename Container=std::deque<T>>
+class FixedQueue : public std::queue<T, Container> {
+public:
+    void push(const T& value) {
+        if (this->size() == MaxLen) {
+           this->c.pop_front();
+        }
+        std::queue<T, Container>::push(value);
+    }
+};
+using namespace std;
+
+int main() {
+	// your code goes here
+FixedQueue<int, 5> q;
+q.push(1);
+q.push(2);
+q.push(3);
+    q.push(4);
+    q.push(5);
+    q.push(6);
+    q.push(7);
+    
+    //to get k th element
+    int a,k;
+    cin>>k;
+    for(int i=1;i<=k;i++)
+    {
+         a=q.front();
+        q.pop();
+    }
+    cout<<a;
+	return 0;
+}
