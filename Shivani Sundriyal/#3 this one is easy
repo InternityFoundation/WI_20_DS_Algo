@@ -1,0 +1,24 @@
+#include<iostream>
+#define N 500
+using namespace std;
+int main()
+{
+int i,j,n,target,arr[N];
+cout<<"Enter no of elements:";
+cin>>n;
+for(i=0;i<n;i++)
+{
+cin>>arr[i];
+}
+cout<<"Enter the target number:";
+cin>>target;
+for(i=0;i<n;i++)
+for(j=i+1;j<n;j++)
+{
+if(arr[i]+arr[j]==target)
+{
+cout<<i<<" "<<j;
+}
+
+ }
+}
