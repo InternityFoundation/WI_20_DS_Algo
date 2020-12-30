@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,rem,reverse_no=0,temp;
+    cin>>n;
+    temp=n;
+    while(n>0)
+    {
+        rem=n%10;
+        reverse_no=(reverse_no*10)+rem;
+        n=n/10;
+    }
+    if(temp==reverse_no){cout<<temp<<" is a Palindrome";}
+    else{cout<<"Not a Palindrome";}
+}
