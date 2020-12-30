@@ -1,0 +1,35 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+int main()
+{
+    int n,target,count=0;
+    cout<<"Enter the number of elements in array nums: ";
+    cin>>n;
+    cout<<"Enter the target value: ";
+    cin>>target;
+    int nums[n];
+    cout<<"Enter the elements of array nums: ";
+    for(int i=0;i<n;i++)
+    {
+       cin>>nums[i]; 
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=1;j<n;j++)
+        {
+            if(nums[i]+nums[j]==target)
+            {
+                count=1;
+                cout<<"Indexes are: ["<<i<<","<<j<<"]";
+                break;
+            }
+        }
+        if(count==1)
+        {
+            break;
+        }
+    }
+    return 0;
+}
