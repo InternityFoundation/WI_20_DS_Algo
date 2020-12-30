@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,flag=0;
+    cout<<"Enter no. of elements : ";
+    cin>>n;
+    cout<<"Enter the numbers : ";
+    int i;
+    int a[20];
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int j;
+    cout<<"Enter target : ";
+    int target;
+    cin>>target;
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]+a[j]==target)
+            {
+                cout<<"["<<i<<","<<j<<"]\n";
+                flag=1;
+            }
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"NOT FOUND";
+    }
+    cout<<"\n";
+    return 0;
+}
