@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter no. of elements : ";
+    cin>>n;
+    int i,a[20];
+    cout<<"Enter numbers : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int j,sum=0;
+    for(i=0;i<n;i++)
+    {
+        for(j=i+2;j<n;j++)
+        {
+            if(a[i]+a[j]>sum)
+            {
+                sum=a[i]+a[j];
+            }
+        }
+    }
+    cout<<"Largest sum of non-adjacent numbers : "<<sum<<endl;
+    return 0;
+}
