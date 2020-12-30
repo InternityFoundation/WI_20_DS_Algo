@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int i,j,k;
+int x,y,z;
+bool triplet(int a[],int n)
+{
+for(i=0;i<n;i++)
+{
+x=a[i]*a[i];
+for(j=i+1;j<n;j++)
+{
+y=a[j]*a[j];
+for(k=j+1;k<n;k++)
+{
+z=a[k]*a[k];
+if((x+y==z)||(x+z==y)||(y+z==x))
+{
+return true;
+}}}}
+return false;
+}
+int main()
+{
+int n;
+cout<<"Enter size: ";
+cin>>n;
+cout<<"Enter elements in the array : ";
+int a[20];
+for(i=0;i<n;i++)
+{
+cin>>a[i];
+}
+triplet(a,n)? cout << "Yes" : cout << "No";
+}
