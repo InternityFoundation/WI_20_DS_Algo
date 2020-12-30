@@ -1,0 +1,43 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+void swap(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n-1; i++)
+     for (j = 0; j < n-i-1; j++)
+        if (arr[j] > arr[j+1])
+            swap(&arr[j], &arr[j+1]);
+}
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+int main()
+{
+    int n,i,j,m;
+    cout<<"Enter the number of elements:";
+    cin>>n;
+    int arr[n],a[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    for(j=0;j<n;j++)
+    {
+       a[j]=arr[j]*arr[j];
+    }
+    m = sizeof(a)/sizeof(a[0]);
+    bubbleSort(a,m);
+    printArray(a,m);
+    return 0;
+}
