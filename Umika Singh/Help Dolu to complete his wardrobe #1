@@ -1,0 +1,19 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	//let the cap colours have numbers like 1 for red, 2 for blue, 3 for green ......
+	//so the array will form as {1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10}
+	//since we have 2 caps per color and 1 cap with one color.
+	vector<int> arr={1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10};
+	int x=arr[0];
+	for(int i=1;i<arr.size();i++)
+	{
+	    x=x^arr[i];
+	}
+	cout<<x;
+	return 0;
+}
