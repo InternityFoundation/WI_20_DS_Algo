@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+int i,j,k,flag=0;
+int x,y,z;
+void triplet(int a[],int n)
+{
+    for(i=0;i<n;i++)
+    {
+        x=a[i]*a[i];
+        for(j=i+1;j<n;j++)
+        {
+            y=a[j]*a[j];
+            for(k=j+1;k<n;k++)
+            {
+                z=a[k]*a[k];
+                if((x+y==z)||(x+z==y)||(y+z==x))
+                {
+                    cout<<"Triplet is : ["<<a[i]<<","<<a[j]<<","<<a[k]<<"]\n";
+                    flag=1;
+                }
+            }
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"NO TRIPLET FOUND";
+    }
+}
+int main()
+{
+    int n;
+    cout<<"Enter no. of elements : ";
+    cin>>n;
+    cout<<"Enter elements in the array : ";
+    int a[20];
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    triplet(a,n);
+    cout<<"\n";
+    return 0;
+}
