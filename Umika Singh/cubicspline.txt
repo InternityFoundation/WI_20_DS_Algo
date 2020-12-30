@@ -1,0 +1,66 @@
+ p=[];
+>> % Number of points
+>> n = input('Enter the number of points:');
+Enter the number of points:4
+>> for(i=1:n)
+X=input('Enter the co-ordinate:');
+p(i,:)=X;
+end
+Enter the co-ordinate:% Inputing the tangent vectors
+Enter the co-ordinate:pu1 = input('Enter the tangent vector at the first poin
+t:');
+Enter the tangent vector at the first point:[0 5 0]
+Enter the co-ordinate:[6 4 8]
+Enter the co-ordinate:[3 2 5]
+ pu2=input('Enter the tangent vector at the second point');
+Enter the tangent vector at the second point[7 4 9]
+>> m=zeros(n,n);
+>> b = [1,zeros(1,n-1)];
+>> c = [zeros(1,n-1),1];
+>> m(1,:) = b;
+>> m(n,:) = c;
+>> for(i=2:n-1)
+c = zeros(1,n);
+c(1,i-1) = 1;
+c(1,i) = 4;
+c(1,i+1) = 1;
+m(i,:) = c;
+end
+>> s = size(p);
+>> d=s(1,2);
+>> r = zeros(n,d);
+>> r(1,:) = pu1;
+>> r(n,:) = pu2;
+>> % populating [R]
+>> for(i=2:n-1)
+a = p(i+1,:)-p(i-1,:);
+a1 = 3*a;
+r(i,:) = a1;
+end
+>> % Inverting the matrix [M]
+>> m1=inv(m);
+>> pu=m1*r;
+>> x = [];
+ for(i=1:n-1)
+p1 = p(i,:);
+p2 = p(i+1,:);
+pt1 = pu(i,:);
+pt2 = pu(i+1,:);
+x2 =[];
+% Simply defining blending functions
+for(u=0:.1:1)
+f1=2*(u^3)-2*u*u+1;
+f2=(-2*(u^3))+(3*(u^2));
+f3=u^3-2*(u^2)+u;
+f4=u^3-u^2;
+x1 = f1*p1 + f2*p2 + f3*pt1 + f4*pt2;
+j = int8(10*u) + 1;
+x2(j,:) = x1;
+end
+k1 = 10*(i-1)+1;
+k2 = k1+10;
+x(k1:k2,:) = x2;
+end
+>> hold on
+>> plot3(p(:,1), p(:,2), p(:,3),'*')
+>> plot3(x(:,1),x(:,2),x(:,3))
