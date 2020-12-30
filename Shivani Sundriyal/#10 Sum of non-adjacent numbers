@@ -1,0 +1,22 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+    int n,sum=0,x=0;
+    cin>>n;
+    int i,j,arr[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    for(i=0;i<n;i++)
+     for(j=i+2;j<n;j++)
+     {
+         int sum=0;
+         sum=arr[i]+arr[j];
+         x=max(sum,x);
+     }
+    cout<<x;
+    return 0;
+}
