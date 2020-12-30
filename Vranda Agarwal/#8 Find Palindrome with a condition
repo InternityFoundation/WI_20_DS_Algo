@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter a no. : ";
+    cin>>n;
+    int org;
+    org=n;
+    int rev=0;
+    int mod;
+    while(n!=0)
+    {
+        mod=n%10;
+        rev=(rev*10)+mod;
+        n/=10;
+    }
+    if(org==rev)
+    {
+        cout<<"This is a palindrome.";
+    }
+    else
+    {
+        cout<<"This is not a palindrome.";
+    }
+    cout<<"\n";
+    return 0;
+}
