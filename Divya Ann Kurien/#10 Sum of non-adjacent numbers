@@ -1,0 +1,28 @@
+#include<stdio.h>
+
+
+int max(int x, int y)
+{
+	if(x>y)
+		return x;
+	else
+		return y;
+}
+void main() 
+{
+
+	int a[10], n, d, curr_sum=0;
+	printf("\nEnter value of n : ");
+	scanf("%d", &n);
+	for(int i=0;i<n;i++)
+	scanf("%d", &a[i]);
+	int curr_sum1 = a[0];
+	int curr_sum2=0;
+	for(int i=1;i<n;i++)
+	{
+		curr_sum = max(curr_sum1, curr_sum2);
+		curr_sum1 = curr_sum2+a[i];
+		curr_sum2 = curr_sum;
+	}
+	printf("\nMaximum sum of non-adjacent elememst = %d",max(curr_sum1,curr_sum2));
+}
