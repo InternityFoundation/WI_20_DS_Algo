@@ -1,0 +1,7 @@
+int singleNumber(vector<int>& nums) {
+        int res=nums[0],i;
+        for(i=1;i<nums.size();i++)
+            res=res^nums[i];
+        return res;
+        
+    }
