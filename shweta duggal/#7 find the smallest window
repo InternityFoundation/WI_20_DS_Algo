@@ -1,0 +1,45 @@
+#include <iostream.h>
+using namespace std;
+ 
+
+void window(int arr[], int n)
+{
+    int left = -1, = -1;
+    int maxnumber = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+        if (maxnumber< arr[i])
+            maxnumber= arr[i];
+ 
+       
+        if (arr[i] < maxnumber)
+            right = i;
+    }
+ 
+  
+    int minnumber = INT_MAX;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (minnumber > arr[i])
+            minnumber = arr[i];
+ 
+      
+        if (arr[i] > minnumber)
+            left = i;
+    }
+ 
+    cout << "Sort array from  " << left<< " to " << right;
+}
+ 
+int main()
+{
+    int arr[a] 
+    int n = sizeof(arr)/sizeof(arr[0]);
+ 
+    findwindow(arr, n);
+ 
+    return 0;
+}
+
+
+
