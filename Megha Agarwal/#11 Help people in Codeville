@@ -1,0 +1,36 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<int> people;
+	int n, a,limit;
+	cout<<"enter size: ";
+	cin>>n;
+	cout<<"enter limit: ";
+	cin>>limit;
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a;
+	    people.push_back(a);
+	}
+	sort(people.begin(),people.end());
+    int count= 0;
+    int sum =0;
+    int i =0;
+    int j = people.size()-1;
+    while(i<=j)
+    {
+    sum = people[i] + people[j];
+    if(sum<=limit)
+    {
+    i++;
+    }
+    j--;
+    count++;
+    }
+    cout<<"\n";
+    cout<<count;
+	return 0;
+}
+
