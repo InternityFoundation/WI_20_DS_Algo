@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> sem;
+    vector<string> name;
+    int n,a,sum1=0,sum2=0;
+    string s;
+    cout<<"Enter the number of interns: ";
+    cin>>n;
+    cout<<"Enter the interns name: ";
+    for(int i=0;i<n;i++)
+    {
+        cin>>s;
+        name.push_back(s);
+    }
+    cout<<"Enter the semester of resp. intern: ";
+    for(int i=0;i<n;i++)
+    {
+        cin>>a;
+        sem.push_back(a);
+    }
+    //Assuming there are only 2 interviewers i1,i2
+    vector<string> i1,i2;
+    for(int i=0;i<n-1;i++)
+    {
+        if(i%2==0)
+        {
+            i1.push_back(name[i]);
+            sum1+=sem[i];
+        }
+        else
+        {
+            i2.push_back(name[i]);
+            sum2+=sem[i];
+        }
+    }
+    if(n%2!=0)
+    {
+        if(sum1>=sum2)
+        {
+            i2.push_back(name[n-1]);
+        }
+        else
+        {
+            i1.push_back(name[n-1]);
+        }
+    }
+    else
+    i2.push_back(name[n-1]);
+    cout<<"Required result is: \n"
+    for(int i=0;i<i1.size();i++)
+        cout<<i1[i]<<" ";
+    cout<<"\n";
+    for(int i=0;i<i2.size();i++)
+        cout<<i2[i]<<" ";
+    return 0;
+}
