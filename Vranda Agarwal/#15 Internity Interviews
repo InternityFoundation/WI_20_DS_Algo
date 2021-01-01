@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter no. of candidates : ";
+    cin>>n;
+    string c_name[n]; //candidate name
+    int i;
+    cout<<"Enter candidate names : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>c_name[i];
+    }
+    int sem[n];  // semester array
+    cout<<"Enter semester in order : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>sem[i];
+    }
+    cout<<"Enter interviewer name : ";
+    string i_name[2];  //interviewer array
+    for(i=0;i<2;i++)
+    {
+        cin>>i_name[i];
+    }
+    
+    //declare 4 arrays for names and semesters.
+    
+    string e_name[n/2+1],o_name[n/2];
+    int e_sem[n/2+1],o_sem[n/2];
+    int a=0,b=0,c=0,d=0;     // different iterators for different arrays
+   
+   //store names and semesters.
+   
+   for(i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            e_name[a]=c_name[i];
+            a++;
+            e_sem[c]=sem[i];
+            c++;
+        }
+        else
+        {
+            o_name[b]=c_name[i];
+            b++;
+            o_sem[d]=sem[i];
+            d++;
+        }
+    }
+     
+    if(n%2==0)
+    {
+        for(i=0;i<a;i++)
+        {
+            cout<<e_name[i]<<" ";
+        }
+        cout<<"\n";
+        for(i=0;i<b;i++)
+        {
+            cout<<o_name[i]<<" ";
+        }
+    }
+    else
+    {
+        int m1,m2;  //to store min. values of semester.
+        m1=e_sem[0];
+        m2=o_sem[0];
+        for(i=0;i<c;i++)
+        {
+            if(e_sem[i]<m1)
+            {
+                m1=e_sem[i];
+            }
+        }
+        for(i=0;i<d;i++)
+        {
+            if(o_sem[i]<m2)
+            {
+                m2=o_sem[i];
+            }
+        }
+        cout<<"\n desired output is : "<<endl;
+        if(m1<m2 || m1==m2)
+        {
+            for(i=0;i<a;i++)
+            {
+                cout<<e_name[i]<<" ";
+            }
+            cout<<"\n";
+            for(i=0;i<b;i++)
+            {
+                cout<<o_name[i]<<" ";
+            }
+        }
+        else
+        {
+            for(i=0;i<b;i++)
+            {
+                cout<<o_name[i]<<" ";
+            }
+            cout<<"\n";
+            for(i=0;i<a;i++)
+            {
+                cout<<e_name[i]<<" ";
+            }
+        }
+    }
+    cout<<"\n";
+    return 0;
+}
