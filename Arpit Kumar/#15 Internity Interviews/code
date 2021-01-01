@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct student
+{
+  string name;
+  int semester;
+};
+
+void printStudentDetails(student students[], int n)
+{
+  for (int i = 0; i < n; i++){
+    cout << "Student name : " << students[i].name << endl;
+    cout << "Sem:" << students[i].semester<<endl;
+    }
+}
+
+
+int main(){
+  cout<<"Enter the number of selected students:"<<endl;
+  int n;
+  cin>>n;
+  if(n<=0){cout<<"Enter a valid number!"<<endl;}
+  cout<<"Enter the names and semester of selected students:"<<endl;
+
+  student students[n];
+  for(int i=0;i<n;i++){
+    cout<<"Enter the name of student"<<i+1<<" "<<endl;
+    cin >> students[i].name;
+    cout << "Enter number of semester(between 1-8) in which above student is: "<<endl;
+    cin >> students[i].semester;
+}
+  //printStudentDetails(students, n);
+
+vector<string> a1,a2;
+int sum1=0,sum2=0;
+  for(int i=0;i<n-1;i++){
+     if(i%2==0){
+       a1.push_back(students[i].name);
+       sum1+=students[i].semester;
+     }
+    else {
+       a2.push_back(students[i].name);
+       sum2+=students[i].semester;
+     }
+    }
+    if(n%2==0){
+      a2.push_back(students[n-1].name);
+      sum2+=students[n-1].semester;
+    }
+    else{
+      if(sum1<sum2){a1.push_back(students[n-1].name);}
+      else{a2.push_back(students[n-1].name);}
+    }
+
+    cout<<"Students who will be interviewed by Ramadheer: ";
+    for(int i=0;i<a1.size();i++) cout<<a1[i]<<" ";
+    cout<<endl;
+    cout<<"Students who will be interviewed by Sardar Khan: ";
+    for(int i=0;i<a2.size();i++) cout<<a2[i]<<" ";
+
+ return 0;
+}
