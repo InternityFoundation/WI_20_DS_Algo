@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,i;
+    cout<<"Enter no. of inputs : ";
+    cin>>n;
+    int a[n];
+    int sal[n];
+    cout<<"Enter the lines of code : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    for(i=0;i<n;i++)
+    {
+        sal[i]=1;
+    }
+    for(i=0;i<n-1;i++)
+    {
+        if(a[i+1]>a[i])
+         {
+             sal[i+1]=sal[i]+1;
+         }
+    }
+    for(i=n-1;i>=1;i--)
+    {
+        if(a[i]<a[i-1] && sal[i]==sal[i-1])
+         sal[i-1]+=1;
+    }
+    cout<<"Salaries are : [";
+    for(i=0;i<n;i++)
+    {
+        cout<<sal[i]<<" ";
+    }
+    cout<<"]\n";
+    return 0;
+}
