@@ -1,0 +1,13 @@
+s = list(map(int,input().split()))
+if len(s)==1:
+    print(s[0])
+elif len(s)==2:
+    print(max(s[0],s[1]))
+else:
+    e = s[1]
+    i = s[0]
+    for j in range(2,len(s)):
+        e  = max(e,i)
+        i = max(s[j],i+s[j])
+        i,e = e,i
+    print(max(e,i))
