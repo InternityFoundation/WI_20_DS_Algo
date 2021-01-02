@@ -1,0 +1,13 @@
+
+s = list(map(int,input().split()))
+i  = 0
+a = len(s)-1
+l = []
+while(a>=i):
+    if abs(s[i])>=s[a]:
+        l.append(s[i]*s[i])
+        i=i+1
+    else:
+        l.append(s[a]*s[a])
+        a=a-1
+print(l[::-1])
