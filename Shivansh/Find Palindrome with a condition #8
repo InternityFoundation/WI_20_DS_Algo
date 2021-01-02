@@ -1,0 +1,19 @@
+s = int(input())
+l=[]
+while(s>0):
+    p=s%10
+    l.append(p)
+    s=s/10
+lt = 0
+rt = len(l)-1
+f=0
+while(rt>=lt):
+    if l[lt]==l[rt]:
+        lt=lt+1
+        rt=rt-1
+    else:
+        print("Not a palindrome")
+        f=1
+        break
+if f==0:
+    print("Its a palindrome")
