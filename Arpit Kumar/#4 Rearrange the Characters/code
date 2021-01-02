@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+const int MAX_CHAR = 26;
+
+struct Key
+{
+    int freq;
+    char ch;
+    // function for priority_queue to store Key according to freq
+    bool operator<(const Key &k) const {return freq < k.freq;}
+};
+
+void result(string str)
+{
+    int n = str.length();
+    int count[MAX_CHAR] = {0};
+    for (int i = 0 ; i < n ; i++)
+        count[str[i]-'a']++;
+
+    // Inserting all characters with their frequencies into a priority_queue
+    priority_queue< Key > pq;
+    for (char c = 'a' ; c <= 'z' ; c++)
+        if (count[c-'a'])
+            pq.push( Key { count[c-'a'], c} );
+
+    str = "" ;
+
+    // work as the previous visited element, initial previous element be. ( '#' and it's frequency '-1' )
+    Key prev {-1, '#'} ;
+
+    while (!pq.empty())
+    {
+        // pop top element from queue and add it to string.
+        Key k = pq.top();
+        pq.pop();
+        str = str + k.ch;
+
+        if (prev.freq > 0) pq.push(prev);
+
+        // making current character as the previous 'char', decrease frequency by 'one'
+        (k.freq)--;
+        prev = k;
+    }
+
+    if (n != str.length()) cout << "None" << endl;
+    else cout << str << endl;
+}
+
+int main(){
+  int t;
+  cin>>t;
+  while(t>0){
+    string str;
+    cin>>str;
+    result(str);
+    t--;
+  }
+  return 0;
+}
