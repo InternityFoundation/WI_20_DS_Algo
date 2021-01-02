@@ -1,0 +1,27 @@
+vector<vector<int>> solve(vector<vector<int>>& matrix) {
+      int row=matrix.size();
+    int col=matrix[0].size();
+    for(int i=col-1;i>=0;i--){
+        vector<int> a;
+        for(int j=i,k=0;j<col && k<row;j++,k++){
+            a.push_back(matrix[k][j]);
+        }
+        sort(a.begin(),a.end());
+        for(int j=i,k=0;j<col && k<row;j++,k++){
+            matrix[k][j]=a[k];
+        }
+    }
+
+    for(int i=1;i<row;i++){
+        vector<int> a;
+        for(int j=i,k=0;j<row && k<col;j++,k++){
+            a.push_back(matrix[j][k]);
+        }
+        sort(a.begin(),a.end());
+        for(int j=i,k=0;j<row && k<col;j++,k++){
+            matrix[j][k]=a[k];
+        }
+    }
+
+    return matrix;
+}
