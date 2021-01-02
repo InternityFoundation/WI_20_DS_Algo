@@ -1,0 +1,16 @@
+s = list(map(int,input().split()))
+a = int(input())
+d = {}
+c=0
+ans=[]
+for i in s:
+    if (a-i) in d:
+        p = []
+        p.append(c)
+        p.append(d[a-i])
+        ans.append(p)
+        c=c+1
+    else:
+        d[i]=c
+        c=c+1
+print(ans)
