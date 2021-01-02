@@ -1,0 +1,63 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	// your code goes here
+	vector<string> names;
+	vector<int> sem;
+	int n, d;
+	string c;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+	    cin>>c;
+	    names.push_back(c);
+	}
+	for(int i=0;i<n;i++)
+	{
+	    cin>>d;
+	    sem.push_back(d);
+	}
+	float i1,i2;
+	cin>>i1>>i2;
+    vector<string> a1, a2;
+    int sum1=0,sum2=0,minimum=INT_MAX, maximum=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        minimum=min(minimum,sem[i]);
+        maximum=max(maximum,sem[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+     if(i%2==0)
+        {
+         a1.push_back(names[i]);
+     if(sem[i]==minimum)sum1+=30;
+     else if(sem[i]==maximum)sum1+=40;
+         else sum1+=35;
+        }
+     else { 
+         a2.push_back(names[i]);
+         if(sem[i]==minimum)sum2+=30;
+     else if(sem[i]==maximum)sum2+=40;
+         else sum2+=35;
+           }
+    }
+    if(n%2!=0)
+    {
+        a1.pop_back();
+        // taking sum of both the strings
+        int time;
+         if(sem[n-1]==minimum)time=30;
+     else if(sem[n-1]==maximum)time=40;
+         else time=35;
+        if(sum1+time<=i1*60)a1.push_back(names[n-1]);
+        else a2.push_back(names[n-1]);
+    }
+    //printing both the vectors
+    for(int i=0;i<a1.size();i++)cout<<a1[i]<<" ";
+    cout<<"\n";
+    for(int i=0;i<a2.size();i++)cout<<a2[i]<<" ";
+    
+	return 0;
+}
