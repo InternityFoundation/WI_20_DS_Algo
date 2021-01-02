@@ -1,0 +1,26 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+ 
+int maxSumSubseq(int arr[], int i, int n, int prev)
+{
+    if (i == n)
+        return 0;
+    int excl = maxSumSubseq(arr, i + 1, n, prev);
+ 
+    int incl = 0;
+ 
+    if (prev + 1 != i)
+        incl = maxSumSubseq(arr, i + 1, n, i) + arr[i];
+    return max(incl, excl);
+}
+ 
+int main()
+{
+    int arr[] = { 5, 1, 1, 5 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    cout << "Maximum sum is " << maxSumSubseq(arr, 0, n, INT_MIN);
+ 
+    return 0;
+}
