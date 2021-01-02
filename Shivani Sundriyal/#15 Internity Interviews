@@ -1,0 +1,109 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter no. of candidates : ";
+    cin>>n;
+    string name[n]; //candidate name
+    int i;
+    cout<<"Enter candidate names : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>name[i];
+    }
+    int sem[n];  // semester array
+    cout<<"Enter semester: ";
+    for(i=0;i<n;i++)
+    {
+        cin>>sem[i];
+    }
+    cout<<"Enter interviewer name : ";
+    string interviewer[2];  //interviewer array
+    for(i=0;i<2;i++)
+    {
+        cin>>interviewer[i];
+    }
+
+    //declare 4 arrays for names and semesters.
+
+    string evenname[n/2+1],oddname[n/2];
+    int evensem[n/2+1],oddsem[n/2];
+    int a=0,b=0,c=0,d=0;     // different iterators for different arrays
+
+   //store names and semesters.
+
+   for(i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            evenname[a++]=name[i];
+            evensem[c++]=sem[i];
+        }
+        else
+        {
+            oddname[b++]=name[i];
+            oddsem[d++]=sem[i];
+        }
+    }
+
+    if(n%2==0)
+    {
+        for(i=0;i<a;i++)
+        {
+            cout<<evenname[i]<<" ";
+        }
+        cout<<"\n";
+        for(i=0;i<b;i++)
+        {
+            cout<<oddname[i]<<" ";
+        }
+    }
+    else
+    {
+        int m1,m2;  //to store min. values of semester.
+        m1=evensem[0];
+        m2=oddsem[0];
+        for(i=0;i<c;i++)
+        {
+            if(evensem[i]<m1)
+            {
+                m1=evensem[i];
+            }
+        }
+        for(i=0;i<d;i++)
+        {
+            if(oddsem[i]<m2)
+            {
+                m2=oddsem[i];
+            }
+        }
+        cout<<"\n desired output is : "<<endl;
+        if(m1<m2 || m1==m2)
+        {
+            for(i=0;i<a;i++)
+            {
+                cout<<evenname[i]<<" ";
+            }
+            cout<<"\n";
+            for(i=0;i<b;i++)
+            {
+                cout<<oddname[i]<<" ";
+            }
+        }
+        else
+        {
+            for(i=0;i<b;i++)
+            {
+                cout<<oddname[i]<<" ";
+            }
+            cout<<"\n";
+            for(i=0;i<a;i++)
+            {
+                cout<<evenname[i]<<" ";
+            }
+        }
+    }
+    cout<<"\n";
+    return 0;
+}
