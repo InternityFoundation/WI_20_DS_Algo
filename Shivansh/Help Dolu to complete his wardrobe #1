@@ -1,0 +1,8 @@
+s = list(map(int,input().split()))
+if len(s)==1:
+    print(s[0])
+else:
+    g=s[0]
+    for i in range(1,len(s)):
+        g = g^s[i]
+    print(g)
