@@ -1,0 +1,17 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+void rec(string &s, int i)
+{
+    int n=s.length();
+    if(i==n/2) return;
+    swap(s[i],s[n-1-i]);
+    rec(s,i+1);
+}
+int main() {
+    string s;
+    cin>>s;
+    rec(s,0);
+    cout<<s;
+	return 0;
+}
