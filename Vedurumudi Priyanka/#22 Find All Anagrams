@@ -1,0 +1,56 @@
+class Solution
+{
+public:
+
+std::vector<int> findAnagrams(std::string s, std::string p) 
+{
+    if(s.empty()) return std::vector<int>();
+    if(s.size() < p.size()) return std::vector<int>();
+    
+    std::vector<int> res;
+    std::map<char, int> mp;
+    
+    for(const auto &el: p)
+    {
+        mp[el]++;
+    }
+    
+    std::map<char, int> mtmp;
+    const std::string tmp = s.substr(0, p.size());
+
+    for(const auto &el: tmp)
+    {
+        mtmp[el]++;
+    }
+    
+    if(mtmp == mp)
+    {
+        res.push_back(0);
+    }
+    
+    for(size_t i = 1; i <= s.size() - p.size(); i++)
+    {   
+        const auto c1 = s[i-1];
+        const auto c2 = s[i+p.size()-1];
+                    
+        if(mtmp[c1] == 1)
+        {
+            mtmp.erase(c1); 
+        }
+        else
+        {
+            mtmp[c1]--;
+        }
+        
+        mtmp[c2]++;
+                 
+        if(mtmp == mp)
+        {
+            res.push_back(i);
+        }
+    }
+    
+    return res;
+}
+};
+
