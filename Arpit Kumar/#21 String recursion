@@ -1,0 +1,9 @@
+class Solution {
+public:
+    void rec(vector<char>& str,int i){
+        if(i==str.size()/2) return;
+        swap(str[i],str[str.size()-1-i]);
+        rec(str, i+1);
+    }
+    void reverseString(vector<char>& s) {rec(s,0);}
+};
