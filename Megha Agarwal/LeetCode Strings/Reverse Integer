@@ -1,0 +1,18 @@
+class Solution
+{
+public:
+    int reverse(int x)
+    {
+        long long num=x;
+        long long y=0;
+        int r;
+        while(num)
+        {
+            r =num%10;
+            y=y*10+r;
+            num=num/10;
+        }
+         return (y<INT_MIN || y>INT_MAX) ? 0 : y;
+        return y;
+    }
+};
