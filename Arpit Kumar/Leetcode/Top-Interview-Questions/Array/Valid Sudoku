@@ -1,0 +1,62 @@
+class Solution {
+public:
+    
+    bool row(vector<vector<char>> & board){
+    unordered_map<char,int> m;
+    for(int i=0;i<9;i++){
+        m.clear();
+        for(int j=0;j<9;j++){
+            if(board[i][j]!='.'){
+                if(m.find(board[i][j])!=m.end())return false;
+                m[board[i][j]]=1;
+            }
+        }
+    }
+    return true;
+}
+    
+    bool col(vector<vector<char>> & board){
+    unordered_map<char,int> m;
+    for(int i=0;i<9;i++){
+        m.clear();
+        for(int j=0;j<9;j++){
+            if(board[j][i]!='.'){
+                if(m.find(board[j][i])!=m.end())return false;
+                m[board[j][i]]=1;
+            }
+        }
+    }
+    return true;
+}
+    
+    bool block(vector<vector<char>> &board){
+    int i=0,j=0;
+    int count=0;
+    while(i<9 && j<9){
+        unordered_map<int,int> m;
+        m.clear();
+        for(int x=i;x<i+3;x++){
+            for(int y=j;y<j+3;y++){
+                if(board[x][y]!='.'){
+                    if(m.find(board[x][y])!=m.end())return false;
+                    m[board[x][y]]=1;
+                }
+            }
+        }
+        i+=3;
+        count++;
+        if(count==3){
+            i=0;
+            count=0;
+            j+=3;
+        }
+    }
+    return true;
+    
+}
+    
+    bool isValidSudoku(vector<vector<char>>& board) {
+        if(row(board) && col(board) && block(board)) return true;
+        return false;
+    }
+};
