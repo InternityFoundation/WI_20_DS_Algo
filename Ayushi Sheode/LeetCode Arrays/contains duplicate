@@ -1,15 +1,12 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        
+       map<int,int>m; 
+        int i;
         if(nums.size()==0)
         {
             return false;
         }
-        
-       map<int,int>m; 
-        int i;
-        
         for(i=0;i<nums.size();i++)
         {
             m[nums[i]]++;
@@ -25,12 +22,16 @@ public:
             else
             {
                 flag=1;
-            }
+           
+}
         }
         if(flag==1)
         {
             return false;
         }
- 
-    
+        else
+        {
+            return true;
+        }
+    }
 };
