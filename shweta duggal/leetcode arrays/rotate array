@@ -1,0 +1,17 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        
+        int length=nums.size();
+        
+        k=k%length;
+        
+        reverse(nums.begin(),nums.begin()+length-k);
+        reverse(nums.begin()+length-k,nums.end());        
+        reverse(nums.begin(),nums.end());  
+            
+        for (int i = 0; i < nums.size(); i++) 
+                 cout <<nums[i] << " "; 
+               
+        }
+};
