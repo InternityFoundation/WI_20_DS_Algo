@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+  int main(){
+  int n;
+  cout<<"Enter number of employee: "<<endl;
+  cin>>n;
+  int v[n];
+  for(int i=0;i<n;i++){cin>>v[i];}
+  int ans[n];
+  for(int i=0;i<n;i++){ans[i]=1;}
+  for(int i=0;i<n-1;i++){
+    if(v[i+1]>v[i]){ans[i+1]=ans[i]+1;}
+  }
+    for(int i=n-1;i>0;i--){
+      if(v[i-1]>v[i] && ans[i-1]==ans[i]){ans[i-1]++;}
+    }
+    for(int i=0;i<n;i++){cout<<ans[i]<<" ";}
+return 0;
+
+}
