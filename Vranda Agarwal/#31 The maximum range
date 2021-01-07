@@ -1,0 +1,48 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+int main()
+{
+    int n,k;
+    cout<<"Enter no. of elements : ";
+    cin>>n;
+    cout<<"Enter value for k : ";
+    cin>>k;
+    int a[n];
+    int i,j,count;
+    cout<<"Enter elements : ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int final[n-1];
+    int x=0;
+    for(i=0;i<n-1;i++)
+    {
+        count=0;
+        for(j=i+1;j<n;j++)
+        {
+            if(abs(a[i]-a[j])<=k)
+            {
+                count+=1;
+            }
+            else
+            {
+                break;
+            }
+        }
+        final[x]=count;
+        x++;
+    }
+    int max;
+    max=final[0];
+    for(i=0;i<n-1;i++)
+    {
+      if(final[i]>max)
+      {
+          max=final[i];
+      }
+    }
+    cout<<"Length of largest sub-array : "<<max+1<<endl;
+    return 0;
+}
