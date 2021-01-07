@@ -1,0 +1,50 @@
+#include<iostream>
+#include<cstdlib>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+    int a[100];
+    int n,k;
+    cout<<"Enter number of elements: ";
+    cin>>n;
+    cout<<"Enter the value for k : ";
+    cin>>k;
+    cout<<"Enter elements of array : ";
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int final[n-1];
+    int pos=0;
+    int count=0;
+    for(int i=0;i<n-1;i++)
+    {
+        count=0;
+        for(int j=i+1;j<n;j++)
+        {
+            if(abs(a[i]-a[j])<=k) //abs is used to return the absolute value
+            {
+                count+=1;
+            }
+            else
+            {
+                break;
+            }
+        }
+        final[pos]=count;
+        pos++;
+    }
+    int maximum= final[0];
+    for(int i=0;i<n-1;i++)
+    {
+      if(final[i]>maximum)
+      {
+          maximum =final[i];
+      }
+    }
+    cout<<"\n";
+    cout<<maximum+1<<endl;
+    return 0;
+}
