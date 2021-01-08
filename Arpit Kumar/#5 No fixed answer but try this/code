@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct employee{
+    int record;
+};
+
+int main()
+{
+    employee e;
+    int N;
+    
+    cout<<"Enter the numbers of order. "<<endl;
+    cin>>N;
+    int record[N];
+    for(int i=0;i<N;i++){
+        cin>>e.record;
+    }
+    int i;
+    cout<<"Enter i. "<< endl;
+    cin>>i;
+    int get_last;
+    get_last = record[N-i];
+    cout<<get_last;
+    return get_last;
+}
