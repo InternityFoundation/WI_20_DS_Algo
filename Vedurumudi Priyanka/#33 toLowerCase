@@ -1,0 +1,18 @@
+class Solution
+{
+public:
+
+std::string toLowerCase(std::string str) 
+{
+    for(auto &el: str)
+    {
+        if (std::isupper(el)) 
+        {
+            el = std::tolower(el);
+        }
+    }
+    
+    return str;
+}
+};
+
