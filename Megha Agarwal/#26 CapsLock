@@ -1,0 +1,47 @@
+string check(string s,int n)
+{
+    for (int i = 0; i<n; i++)
+    { 
+        int x = s[i]; 
+        if (isupper(x))  
+            s[i] = tolower(x);
+            
+        else {
+            s[i]=toupper(x);
+        }    
+    }
+    
+    int y=s[0];
+    y=toupper(y);
+    
+    return s;            
+}
+
+int main() {
+	
+	string s;
+	cin>>s;
+	int n=s.size();
+	
+	int upper=0,lower=0;
+	
+	for(int i=0;i<n;i++)
+	{
+	    int p=s[i];
+	    if(isupper(p))
+	       upper++;
+	    else if(islower(p))
+	       lower++;
+	}
+	
+	if(upper==n)
+	   s=check(s,n);
+	   
+	if(islower(s[0]) && upper==n-1)
+	   s=check(s,n);
+     
+    
+    cout<<s;
+    
+	return 0;
+}
