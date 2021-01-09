@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int length(ListNode* a){
+        ListNode* temp=a;
+        int cnt=0;
+        while(temp){
+            cnt++;
+            temp=temp->next;
+        }
+        return cnt;
+    }
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int len1=length(headA),len2=length(headB);
+        // cout<<"len1= "<<len1<<" len2= "<<len2;
+        if(len1>len2)return getIntersectionNode(headB,headA);
+        int diff=len2-len1;
+        ListNode* temp=headB;
+        ListNode* temp1=headA;
+        while(diff--)temp=temp->next;
+        while(temp!=temp1){
+            if(temp==NULL or temp1==NULL)return NULL;
+            temp=temp->next;
+            temp1=temp1->next;
+        }
+        return temp;
+    }
+};
