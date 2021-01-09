@@ -1,0 +1,20 @@
+bool isPalindrome(ListNode* head) {
+        struct ListNode *p=head;
+         stack<int> st;
+        
+        while(p!=NULL)
+              {
+                  st.push(p->val);
+            p=p->next;
+              }
+        while(head!=NULL)
+        {
+            int i=st.top();
+            st.pop();
+            if(head->val!=i)
+                return false;
+            head=head->next;
+                
+        }
+        return true;
+    }
