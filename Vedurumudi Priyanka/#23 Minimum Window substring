@@ -1,0 +1,57 @@
+class Solution {
+public:
+	string minWindow(string s, string t) {
+		unordered_map<char,int> need;
+		unordered_map<char,int> wind;
+		string ans="";
+		int temp=INT_MAX;
+
+		for(int i=0;i<t.size();i++)
+		{
+			need[t[i]]++;
+		}
+
+		int match=0;
+
+		int right=0;
+		int left=0;
+		while(right<s.size())
+		{
+			if(need.count(s[right]))
+			{
+				wind[s[right]]++;
+			}
+
+			if(need.count(s[right]) && wind[s[right]]==need[s[right]])
+			{
+				match++;
+			}
+
+			while(match==need.size() && left<=right)
+			{
+				if(temp>right-left+1)
+				{
+					temp=right-left+1;
+					ans=s.substr(left,right-left+1);
+				}
+				if(need.count(s[left]))
+				{
+					wind[s[left]]--;
+				}
+
+				if(need.count(s[left]) && wind[s[left]]<need[s[left]])// super nasty bug 
+				{
+
+					match--;
+				}
+
+				left++;
+
+			}
+
+			right++;
+		}
+
+		return ans;
+	}
+};
