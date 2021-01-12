@@ -1,0 +1,24 @@
+int calPoints(vector<string>& ops) {
+        stack<int> stk;
+	int ans = 0;
+	for(string &s: ops){
+		if(s == "C"){
+			ans -= stk.top();
+			stk.pop();
+		}else if(s == "D"){
+			ans += 2 * stk.top();
+			stk.push(2*stk.top());
+		}else if(s == "+"){
+			int x = stk.top();stk.pop();
+			int y = stk.top();
+			stk.push(x);
+			stk.push(x+y);
+			ans += x+y;
+		}else{
+			int x = stoi(s);
+			stk.push(x);
+			ans += x;
+		}
+	}
+	return ans;
+    }
