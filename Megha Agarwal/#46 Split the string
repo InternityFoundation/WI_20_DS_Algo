@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int numSplits(string s) 
+    {
+        vector<int> count(26,0);
+        for(char c: s)
+        {
+            count[c-'a']+=1;
+        }
+        vector<int> temp(26,0);
+        int ans = 0;
+        for(int i=0;i<s.length();i++)
+        {
+            temp[s[i]-'a']++;
+            count[s[i]-'a']--;
+            int c1=0,c2=0;
+            for(int j=0;j<26;j++)
+            {
+                if(temp[j])
+                    c1++;
+                if(count[j])
+                    c2++;
+            }
+            if(c1==c2)
+                ans++;
+        }
+        return ans;
+    }
+};
