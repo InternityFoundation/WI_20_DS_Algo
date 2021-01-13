@@ -1,0 +1,13 @@
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        struct ListNode* rabbit=head;
+        struct ListNode* tortoise=head;
+        while(rabbit && rabbit->next)
+        {
+            rabbit=rabbit->next->next; 
+            tortoise=tortoise->next;
+        }
+        return tortoise;
+    }
+};
