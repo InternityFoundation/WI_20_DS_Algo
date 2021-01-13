@@ -1,0 +1,29 @@
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        if (head->next == NULL)
+            return head;
+        int N = 0;
+        ListNode* node = head;
+        ListNode* first = node;
+        while (node) {
+            if (N == k-1)
+                first = node;
+            node = node->next;
+            N++;
+        }
+        node = head;
+        int cnt = N - k + 1;
+        while (node) {
+            if (cnt == 1) {
+                int temp = first->val;
+                first->val = node->val;
+                node->val = temp;
+                return head;
+            }
+            node = node->next;
+            cnt--;
+        }
+        return NULL; // will never reach
+    }
+};
