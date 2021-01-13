@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+
+#include <iostream>
+
+#include <vector>
+
+#include <queue>
+
+ 
+
+using namespace std;
+
+ 
+
+int main()
+
+{
+   int n,i;
+
+   cin >> n;
+
+   vector<int> v;
+
+   priority_queue<int> q;
+
+   while(v.size()<n && cin>>i)
+
+       v.push_back(i);
+
+   for(i=0;i<v.size();i++)
+
+   {
+
+       if(v[i]!=n)
+
+           {
+
+               q.push(v[i]);
+
+               cout << " " << "\n";
+
+           }
+
+       else if(v[i]==n)
+
+       {
+
+           q.push(v[i]);
+
+           while(q.top()==n)
+
+           {
+
+               cout << q.top() << " ";
+
+               q.pop();
+
+               n=n-1;
+
+           }
+
+           cout << "\n";
+
+       }
+
+   }
+
+return 0;
+
+}
