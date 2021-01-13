@@ -1,0 +1,36 @@
+class Solution 
+{
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) 
+    {
+        if(head==NULL || head->next==NULL)
+        {
+            return head;
+        }
+        ListNode *preheader=new ListNode(-1);
+        preheader->next=head;
+        ListNode *pre=preheader,*curr=preheader,*nex;
+        int nums=0;
+        while(curr->next!=NULL)//Counting total elements
+        {  nums++;
+           curr=curr->next;
+        }
+        
+        while(nums>=k)
+        {
+            curr=pre->next;
+            nex=curr->next;
+            
+            for(int i=1;i<k;i++) //k-1 swaps
+            {
+                curr->next=nex->next;
+                nex->next=pre->next;
+                pre->next=nex;
+                nex=curr->next;
+            }
+            pre=curr;
+            nums=nums-k;
+        }
+        return preheader->next;
+    }
+};
