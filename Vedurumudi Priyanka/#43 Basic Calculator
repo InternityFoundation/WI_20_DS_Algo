@@ -1,0 +1,90 @@
+class Solution {
+public:
+    int strength(string c){
+        if(c=="+" || c=="-")return 1;
+        if(c=="*" || c=="/")return 2;
+        else return 3;
+    }
+    bool isdigit(char c){
+        return c>='0' && c<='9';
+    }
+    bool isoptr(char c){
+        return c=='+' || c=='-' || c=='*' || c=='/';
+    }
+    string infi_to_post(string &in){
+        string post="",kali="";
+        stack<string>st;
+        int n=in.length(),i=0;
+        while(i<n){
+            if(isdigit(in[i])){
+                string temp="";
+                while(i<n && isdigit(in[i]))temp+=(kali+in[i++]);
+                post+=temp+" ";
+                continue;
+            }
+            if(isoptr(in[i])){
+                string curop=kali+in[i];
+                if(st.empty() || strength(curop)>strength(st.top()))st.push(curop);
+                else{
+                    while(!st.empty() && strength(curop)<=strength(st.top())){
+                        post+=st.top();st.pop();
+                    }
+                    st.push(curop);
+                }
+                i++;
+                continue;
+            }
+            if(in[i]==' '){
+                while(i<n && in[i]==' ')i++;
+            }
+        }
+        while(!st.empty()){post+=st.top();st.pop();}
+        return post;
+    }
+    int eval(int optr1,int optr2,char oprnd)
+    {
+        switch (oprnd)
+        {
+            case '+':
+                return (optr1 + optr2);
+            case '-':
+                return (optr1 - optr2);
+            case '*':
+                return (optr1 * optr2);
+            case '/':
+                return (optr1 / optr2);
+        }    
+        return 0;
+    }
+    
+    int post_eval(string s){
+        stack<int>st;string kali="";
+        int n=s.length(),i=0;
+        while(i<n){
+            if(isdigit(s[i])){
+                string temp="";
+                while(i<n && isdigit(s[i]))temp+=s[i++];
+                st.push(stoi(temp));
+                continue;
+            }
+            if(isoptr(s[i])){
+                int y=st.top();st.pop();
+                int x=st.top();st.pop();
+                int z=eval(x,y,s[i]);
+                st.push(z);
+                i++;continue;
+            }
+            if(s[i]==' '){
+                while(i<n && s[i]==' ')i++;
+            }
+        }
+        return st.top();
+    }
+    
+    int calculate(string s) {
+        s=infi_to_post(s);
+        // cout<<s;
+        return post_eval(s);
+        // return 0;
+    }
+};
