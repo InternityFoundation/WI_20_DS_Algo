@@ -1,0 +1,55 @@
+class Twitter {
+public:
+    Twitter() {
+        timestamp=0;
+    }
+    void postTweet(int userId, int tweetId) {
+        timestamp++;
+        push(posts[userId],{timestamp,tweetId});
+        for(auto i:followeeMap[userId]){
+            push(news[i],{timestamp,tweetId});
+        }
+        push(news[userId],{timestamp,tweetId});
+    }
+    vector<int> getNewsFeed(int userId) {
+        vector<int> tmp;
+        for(int i=0;i<news[userId].size();i++){
+            tmp.push_back(news[userId][i].second);
+        }
+        return tmp;
+    }
+    void follow(int followerId, int followeeId) {
+         if(followerMap[followerId].count(followeeId)||followerId==followeeId)return;
+        followeeMap[followeeId].insert(followerId);
+        followerMap[followerId].insert(followeeId);
+        push(news[followerId],posts[followeeId]);
+    }
+    void unfollow(int followerId, int followeeId) {
+         if(!followerMap[followerId].count(followeeId))return;
+        followerMap[followerId].erase(followeeId);
+        followeeMap[followeeId].erase(followerId);
+        vector<pair<int,int>> tmp=posts[followerId];
+        for(auto i:followerMap[followerId]){
+            push(tmp,posts[i]);
+        }
+        news[followerId]=tmp;
+    }
+private:
+    int timestamp;
+    unordered_map<int,vector<pair<int,int>>> news;
+    unordered_map<int,vector<pair<int,int>>> posts;
+    unordered_map<int,unordered_set<int>> followeeMap;
+    unordered_map<int,unordered_set<int>> followerMap;
+    void push(vector<pair<int,int>> &num,pair<int,int> i){
+        if(num.size()==10)num.pop_back();
+        num.insert(num.begin(),i);
+    }
+    void push(vector<pair<int,int>> &num,vector<pair<int,int>> &num1){
+        num.insert(num.end(),num1.begin(),num1.end());
+        sort(num.begin(),num.end(),compare);
+        if(num.size()>10)num.erase(num.begin()+10,num.end());
+    }
+    static bool compare(pair<int,int>  a,pair<int,int> b) {
+        return a.first>b.first;
+    }
+};
