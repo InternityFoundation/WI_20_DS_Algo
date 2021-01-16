@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        std::map<int, int> numbers_available;
+        int index = 0;
+
+        for(auto &num : nums) {
+            const int other = target - num;
+            auto it = numbers_available.find(other);
+            if ((numbers_available.end() != it) && (it->second != index)) {
+                std::vector<int> result(2);
+                result[0] = it->second;
+                result[1] = index;
+                return result;
+            }
+
+            if ((num == other) || numbers_available.end() == numbers_available.find(num))
+                numbers_available[num] = index;
+
+            index++;
+        }
+
+        return std::vector<int>();
+        
+    }
+};
