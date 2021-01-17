@@ -1,0 +1,40 @@
+class Solution {
+public:
+        int top=-1;
+void push(char stack[],int top,char value)
+{
+    top++;
+    stack[top]=value;
+}
+    bool isValid(string s) {
+        stack<char> st;
+        int n=s.size();
+        for(int i=0;i<n;i++)
+        {
+           char c=s.at(i);
+            if(c=='(')
+            {
+                st.push(')');
+            }
+            else if(c=='[')
+            {
+                st.push(']');
+            }
+            else if(c=='{')
+            {
+                st.push('}');
+            }
+            else if(sta.empty())
+            {
+                return false;
+            }
+            else {
+                char ch = st.top();
+                st.pop();
+                if(ch != c)
+                    return false;
+            }
+    }
+        return st.empty();
+    }
+}
