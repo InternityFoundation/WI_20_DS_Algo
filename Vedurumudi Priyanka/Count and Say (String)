@@ -1,0 +1,32 @@
+class Solution {
+public:
+    std::string sequence(int n){
+        if(n == 1){
+            return "1";
+        }
+        std::string current = sequence(n-1);
+        int i = 0;
+        int repeating = 0;
+        char letter = current[0];
+        std::string answer;
+        int length = current.size();
+        while(i < length){
+            while(current[i] == letter){
+                repeating++;
+                i++;
+            }
+            answer += std::to_string(repeating);
+            answer += letter;
+            if(i < length){
+                letter = current[i];
+            }
+            repeating = 0;
+        }
+        return answer;
+    }
+    
+    string countAndSay(int n) {
+        std::string answer_ = sequence(n);
+        return answer_;
+    }
+};
