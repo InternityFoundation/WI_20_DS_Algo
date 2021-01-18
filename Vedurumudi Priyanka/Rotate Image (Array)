@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void rotate(vector<vector<int> > &matrix) {
+        int n = matrix.size();
+        int lo = 0, hi = n-2;
+        while(lo <= hi){
+            doRotation(matrix, lo, hi, n);
+            lo++;
+            hi--;
+        }
+        return;
+    }
+private:
+    void doRotation(vector<vector<int> > &matrix, int p, int q, int n){
+        int tmp;
+        for(int j = p; j<=q; j++){
+                tmp = matrix[p][j];
+                matrix[p][j] = matrix[n-1-j][p];
+                matrix[n-1-j][p] = matrix[n-1-p][n-1-j];
+                matrix[n-1-p][n-1-j] = matrix[j][n-1-p];
+                matrix[j][n-1-p] = tmp;
+        }
+        return;
+    }
+};
