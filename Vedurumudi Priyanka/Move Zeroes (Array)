@@ -1,0 +1,10 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int zero = 0, walk = 0, N = nums.size();
+        while (walk < N) {
+            if (nums[walk++] != 0) 
+                swap(nums[zero++], nums[walk - 1]);
+        }
+    }
+};
