@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int smap[26] = {};
+        fill_n(&smap[0],26,-1);
+        int res = s.size();
+        for(int i=0;i<s.size();i++){
+            if(smap[s[i]-'a'] == -1) smap[s[i]-'a'] = i;
+            else smap[s[i]-'a'] = s.size();  //duplicate, will skip
+        }
+        
+        for(int i= 0;i<26;i++)
+            if(smap[i] != -1) res = min(res,smap[i]);
+        
+        return res == s.size() ? -1:res;
+    }
+};
