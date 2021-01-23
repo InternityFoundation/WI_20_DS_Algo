@@ -1,0 +1,29 @@
+class Solution {
+
+public:
+
+bool containsDuplicate(vector<int>& nums) {
+    vector <bool> vec;
+    vec.push_back(false);
+if (nums.size()<=1){
+    return false;
+}
+for (int i=0; i<nums.size();i++){
+    int m=nums[i];
+    if (m>=vec.size()){
+        for (int j=vec.size();j<=m;j++){
+            vec.push_back(false);
+        }
+    }
+    if (m<vec.size()){
+        if (vec[m]==true){
+            return true;
+        }
+        else{
+            vec[m]=true;
+        }
+    }
+}
+return false;
+}
+};
