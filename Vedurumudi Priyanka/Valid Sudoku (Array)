@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+
+        int rows[9], cols[9], boxes[9], num, check, bn;
+        
+        memset(rows, 0, sizeof(rows));
+        memset(cols, 0, sizeof(cols));
+        memset(boxes, 0, sizeof(boxes));
+
+        for(int i = 0; i < 9; i++)
+        {
+            for(int j = 0; j < 9; j++)
+            {
+                num = board[i][j] - '0';
+                if(num < 1 || num > 9)
+                    continue;
+
+                bn = ((i/3)*3 + j/3);
+                check = (1 << num);
+                if((rows[i] & check) || (cols[j] & check) || (boxes[bn] & check))
+                {
+          
+          
+                    return false;
+                }
+                
+                rows[i] = (rows[i] | check);
+                cols[j] = (cols[j] | check);
+                boxes[bn] = (boxes[bn] | check);
+            }
+        }
+
+        return true;
+    }
+};
