@@ -1,0 +1,18 @@
+def riverSizes(matrix):
+	l=[]
+	for i in range(len(matrix)):
+		for j in range(len(matrix[0])):
+			c=[]
+			if matrix[i][j]==1:
+				river(matrix,i,j,c)
+				l.append(len(c))
+	return l
+def river(grid,row,col,c):
+	if row>=len(grid) or col>=len(grid[0]) or row<0 or col<0 or grid[row][col]!=1:
+		return
+	grid[row][col]="#"
+	c.append(1)
+	river(grid,row+1,col,c)
+	river(grid,row-1,col,c)
+	river(grid,row,col+1,c)
+	river(grid,row,col-1,c)
