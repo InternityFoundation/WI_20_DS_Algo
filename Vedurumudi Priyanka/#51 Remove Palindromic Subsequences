@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int removePalindromeSub(string s) {
+        if(s.length() == 0) return 0;
+        else if(isPal(s)) return 1;
+        
+        return 2;
+    }
+    
+    bool isPal(string s){
+        string t = "";
+        for(int i = s.length() - 1; i >= 0; i--){
+            t += s[i];
+        }
+        return (t == s);
+    }
+};
