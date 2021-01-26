@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int num_people) {
+        int n = num_people;
+        int cookies = candies;
+        vector<int> v(n , 0);
+        if(v.empty())
+            return v;
+        if(v.size() == 1){
+            v.push_back(candies);
+            return v;
+        }
+        int i = 0;
+        int counter = 1;
+        while(cookies){
+            if(counter > cookies){
+                v[i] = v[i] + cookies;
+                cookies = 0;
+            } else{
+            v[i] = v[i] + counter;
+            cookies = cookies - counter;
+            }
+            i++;
+            counter++;
+            if(i == v.size())
+                i = 0;
+        }
+        
+        return v;
+    }
+};
