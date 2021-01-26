@@ -1,0 +1,18 @@
+class Solution {
+private:
+    static tuple<bool, int> q(TreeNode* node, int depth) {
+        if (!node) return make_tuple(true, depth);
+        ++depth;
+        auto [b1, d1] = q(node->left, depth);
+        auto [b2, d2] = q(node->right, depth);
+        return make_tuple(
+            b1 && b2 && abs(d1-d2) <= 1,
+            max(d1, d2)
+        );
+    }
+public:
+    bool isBalanced(TreeNode* root) {
+        auto [balanced, _] = q(root, 0);
+        return balanced;
+    }
+};
