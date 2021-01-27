@@ -1,0 +1,37 @@
+class Solution 
+{
+public:
+    vector<string> letterCombinations(string digits) {
+        if (empty(digits)) return {};
+        
+        vector<string> ans;
+        vector<vector<char>> letters = {{'a','b','c'},
+                                        {'d','e','f'},
+                                        {'g','h','i'},
+                                        {'j','k','l'},
+                                        {'m','n','o'},
+                                        {'p','q','r','s'},
+                                        {'t','u','v'},
+                                        {'w','x','y','z'}};        
+        
+        
+        combinations(digits, 0, ans, letters, "");
+        return ans;
+    }
+    
+    void combinations(string digits, int idx, vector<string> &ans,
+                     const vector<vector<char>> &letters, string temp) {    
+        
+        if (size(temp) == size(digits)) {
+            ans.push_back(temp);
+            return;
+        }
+
+    
+        for (char c : letters[digits[idx] - '0' - 2]) {
+            temp += c;
+            combinations(digits, idx + 1, ans, letters, temp);
+            temp.pop_back();
+        }
+    }
+};
