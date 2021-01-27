@@ -1,0 +1,42 @@
+class Solution 
+{
+public:
+    int getSign( string &s, int &idx ) 
+    {
+        int sign = ( s[ idx ] == '-' ) ? -1 : 1;
+        if( s[ idx ] == '+' or s[ idx ] == '-' ) ++idx;
+        return sign;
+    }
+    NestedInteger deserialize( string &s, int &idx ) 
+    {
+
+        NestedInteger ni;
+        if( s[ idx ] == '[' ) 
+        {
+            
+            ++idx;
+            while( idx < s.size() and s[ idx ] != ']' ) 
+            {
+                ni.add( deserialize( s, idx ) );
+                if( s[ idx ] == ']' ) 
+                { break; 
+                }
+                ++idx;
+            }
+            if( idx < s.size() and s[ idx ] == ']' ) ++idx;
+        } else 
+        {
+            
+            int sign = getSign( s, idx );
+            int start = idx;
+            while( idx < s.size() and isdigit( s[ idx ] ) ) ++idx;
+            ni.setInteger( stoi( s.substr( start, idx ) ) * sign );
+        }
+        return ni;
+    }
+    NestedInteger deserialize(string s) 
+    {
+        int idx = 0;
+        return deserialize( s, idx );
+    }
+};
