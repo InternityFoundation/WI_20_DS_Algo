@@ -1,0 +1,36 @@
+int dfs(vector<vector<int>> matrix,int row,int col)
+{
+	if(row<0 || row==matrix.size() || col<0 || col==matrix[0].size() || matrix[row][col]==0)
+	{
+		return 0;
+	}	
+	
+	matrix[row][col]=0;
+	
+	int a=dfs(matrix,row+1,col);
+	int b=dfs(matrix,row-1,col);
+	int c=dfs(matrix,row,col+1);
+	int d=dfs(matrix,row,col-1);
+	
+	return a+b+c+d+1;
+}
+
+vector<int> riverSizes(vector<vector<int>> matrix) {
+  // Write your code here.
+	
+	vector<int> ans;
+	
+	for(int i=0;i<matrix.size();i++)
+	{
+		for(int j=0;j<matrix[i].size();j++)
+		{
+			if(matrix[i][j]==1)
+			{
+				int count=dfs(matrix,i,j);
+				cout<<count<<" ";
+				ans.push_back(count);
+			}
+		}
+	}
+  return ans;
+}
