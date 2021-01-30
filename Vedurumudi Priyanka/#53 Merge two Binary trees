@@ -1,0 +1,31 @@
+class Solution {
+    TreeNode* getAns(TreeNode*t1, TreeNode*t2){
+        if(t1==NULL && t2==NULL){
+            return NULL;
+        }
+        
+        int data;
+        t1 ? data = t1->val : data = 0;
+        t2 ? data = data + t2->val : data = data + 0;
+        
+        TreeNode*t3 = new TreeNode(data);
+        TreeNode* leftNodeT1;
+        TreeNode* rightNodeT1;
+        TreeNode*leftNodeT2;
+        TreeNode*rightNodeT2 ;
+        
+        t1 ? leftNodeT1 = t1->left : leftNodeT1 = NULL;
+        t1 ? rightNodeT1 = t1->right : rightNodeT1 = NULL; 
+        t2 ? leftNodeT2 = t2->left : leftNodeT2 = NULL;
+        t2 ? rightNodeT2 = t2->right : rightNodeT2 = NULL;
+        
+        t3->left =  getAns(leftNodeT1, leftNodeT2);
+        t3->right = getAns(rightNodeT1, rightNodeT2);
+        return t3;
+    }
+public:
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
+        TreeNode* t3 = getAns(t1,t2);
+        return t3;
+    }
+};
