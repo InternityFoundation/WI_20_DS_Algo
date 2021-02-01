@@ -241,6 +241,51 @@ void MeghaTask(){
     }
 }
 
+void ArpitTask(){
+        // Hashing table to keep the track of the already paired students
+    bool *hash = new bool [no_of_users];
+
+    // Filling the hash table with a default value:false
+    fill(hash, hash + no_of_users, false);
+
+    cout << endl << "***************" <<endl;
+
+    for(int i = 0; i < no_of_users; i++){
+
+        bool flag = false; //keep track if their is any valid pair
+        int idx = -1; //will keep the index of the paired student
+        int minDiff = 0; //will keep track of the min =imum difference
+
+        if(!hash[i]){ //won't check if the pair is already created
+
+            for(int j = i + 1; j < no_of_users; ++j){
+                if(!hash[j]){ //won't check if the pair is already created
+
+                    int diff = abs(stoi(semester[i]) - stoi(semester[j]));
+                    if(diff <= 3 && diff >= minDiff){ //trying to find a pair with biggest semester difference and satisfies the condition
+                        idx = j;
+                        minDiff = diff;
+                        flag = true;
+                    }
+
+                }
+            }
+        }
+
+        if(flag){
+            hash[i] = true;
+            hash[idx] = true;
+            write_pair(username[i],username[idx]);
+            // cout << "{ ";
+            // cout <<  username[i] << "(semester: " << semester[i] << ")";
+            // cout << ", ";
+            // cout << username[idx] << "(semester: " << semester[idx] << ")";
+            // cout << "}";
+            // cout << endl;
+        }
+    }
+}
+
 int main()
 {
 
@@ -305,6 +350,7 @@ int main()
         cout << "Input 1 for Aayushi's task:\n";
         cout << "Input 2 for Shweta's task:\n";
         cout << "Input 3 for Megha's task:\n";
+        cout << "Input 4 for Arpit's task:\n";
         cout<< "Input -1 to exit from the program\n";
         cin >> x;
         switch (x)
@@ -313,22 +359,33 @@ int main()
             delete_content();
             aayushiTask();
             cout << "See output.txt for the output..\n" << endl;
+            cout<<"------------------\n";
             break;
         case 2:
             delete_content();
             ShwetaTask();
             cout << "See output.txt for the output..\n" << endl;
+            cout<<"------------------\n";
             break;
         case 3:
             delete_content();
             MeghaTask();
             cout << "See output.txt for the output..\n" << endl;
+            cout<<"------------------\n";
             break;
+        case 4:
+            delete_content();
+            ArpitTask();
+            cout << "See output.txt for the output..\n" << endl;
+            cout<<"------------------\n";
+            break;
+        
         case -1:
             exit(-1);
             break;
         default:
             cout << "OOPS wrong input..\n" << endl;
+            cout<<"------------------\n";
         }
     }
 
