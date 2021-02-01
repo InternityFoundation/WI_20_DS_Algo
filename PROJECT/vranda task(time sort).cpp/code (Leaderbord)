@@ -1,0 +1,167 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<string> timestamp;
+    vector<string> username;
+    vector<string> faceoffId;
+    vector<string> fullname;
+    vector<string> college;
+    vector<string> semester;
+    vector<string> company;
+    vector<string> dslevel;
+    vector<string> city;
+
+    map<int, string> usernameRegistration;
+
+    string v1, v2, v3, v4, v5, v6, v7, v8, v9;
+    int no_of_users = 0;
+
+    vector<int> t1,t2;
+
+
+
+    ifstream ip("abc.csv");
+    if (ip.is_open())
+    {
+        string line;
+        getline(ip, line);
+
+        while (!ip.eof())
+        {
+            getline(ip, v1, ',');
+            timestamp.push_back(v1);
+
+            getline(ip, v2, ',');
+            username.push_back(v2);
+
+            getline(ip, v3, ',');
+            faceoffId.push_back(v3);
+
+            getline(ip, v4, ',');
+            fullname.push_back(v4);
+
+            getline(ip, v5, ',');
+            college.push_back(v5);
+
+            getline(ip, v6, ',');
+            semester.push_back(v6);
+
+            getline(ip, v7, ',');
+            company.push_back(v7);
+
+            getline(ip, v8, ',');
+            dslevel.push_back(v8);
+
+            getline(ip, v9, '\n');
+            city.push_back(v9);
+
+            no_of_users += 1;
+
+            int d, yr, h, m, s;
+            string mon;
+            sscanf(v1.c_str(), "%d %s %d %d:%d:%d", &d, &mon, &yr, &h, &m, &s);
+            int secs = h * 3600 + m * 60 + s;
+
+            usernameRegistration[secs] = v2;
+            t1.push_back(secs);
+
+
+
+        }
+        ip.close();
+
+    }
+    else
+    {
+        cout << "Unable to open file";
+    }
+
+    string v11, v22, v33, v44, v55, v66, v77, v88, v99;
+    int users = 0;
+    ifstream dp("data.csv");
+    if (dp.is_open())
+    {
+        string line;
+        getline(dp, line);
+
+        while (!dp.eof())
+        {
+            getline(dp, v11, ',');
+            timestamp.push_back(v11);
+
+            getline(dp, v22, ',');
+            username.push_back(v22);
+
+            getline(dp, v33, ',');
+            faceoffId.push_back(v33);
+
+            getline(dp, v44, ',');
+            fullname.push_back(v44);
+
+            getline(dp, v55, ',');
+            college.push_back(v55);
+
+            getline(dp, v66, ',');
+            semester.push_back(v66);
+
+            getline(dp, v77, ',');
+            company.push_back(v77);
+
+            getline(dp, v88, ',');
+            dslevel.push_back(v88);
+
+            getline(dp, v99, '\n');
+            city.push_back(v99);
+
+            users += 1;
+
+            int d1, yr1, h1, m1, s1;
+            string m;
+            sscanf(v1.c_str(), "%d %s %d %d:%d:%d", &d1, &m, &yr1, &h1, &m1, &s1);
+            int sec1 = h1 * 3600 + m1 * 60 + s1;
+
+            usernameRegistration[sec1] = v22;
+            t2.push_back(sec1);
+
+        }
+        dp.close();
+
+
+
+    }
+    else
+    {
+        cout << "Unable to open file";
+    }
+
+    vector<int> t3;
+
+    for(int i=0;i<t1.size();i++)
+    {
+        int diff=abs(t1[i]-t2[i]);
+        t3.push_back(diff);
+    }
+
+    cout<<"Name and time(in secs) taken to solve: \n\n";
+    for(int i=0;i<t3.size();i++)
+    {
+        cout<<username[i]<<"     "<<t3[i]<<endl;
+    }
+    cout<<"\n\n";
+
+    vector<pair<int,string>> leaderboard;
+    for(int i=0;i<t3.size();i++)
+    {
+        leaderboard.push_back({t3[i],username[i]});
+    }
+    sort(leaderboard.begin(),leaderboard.end());
+    cout<<endl;
+    cout<<"Final Leaderboard\n\n";
+    for(int i=0;i<t3.size();i++)
+    {
+        cout<<leaderboard[i].second<<"    "<<leaderboard[i].first<<endl;
+    }
+
+    return 0;
+}
