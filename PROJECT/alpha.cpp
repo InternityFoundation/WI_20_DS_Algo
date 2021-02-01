@@ -21,6 +21,9 @@ vector<string> semester;
 vector<string> company;
 vector<string> dslevel;
 vector<string> city;
+vector<pair<int,bool>> registrationSeconds;
+
+
 int no_of_users = 0;
 
 void write_pair(string user1, string user2)
@@ -131,6 +134,24 @@ void aayushiTask()
         full.pop_back();
         write_pair(last3,last2);
         // cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
+    }
+}
+
+void ShivaniTask(){
+    for ( auto &p : registrationSeconds ) p.second = false;
+        for (int i = 0; i < registrationSeconds.size(); i++)
+        {
+          for(int j = 0; j < registrationSeconds.size(); j++)
+          {
+            if(!registrationSeconds[j].second && registrationSeconds[i].first + 900 >= registrationSeconds[j].first && i!=j)
+            {
+                registrationSeconds[j].second = true;
+                registrationSeconds[i].second = true;
+                write_pair(username[i],username[j]);
+                // cout << "{ " << username[i] << ", " << username[j] << "}" << endl;
+                break;
+            }
+        }
     }
 }
 
@@ -328,6 +349,12 @@ int main()
             city.push_back(v9);
 
             no_of_users += 1; //increment number of lines
+            int d, yr, h, m, s;
+            string mon;
+            sscanf(v1.c_str(), "%d %s %d %d:%d:%d", &d, &mon, &yr, &h, &m, &s);
+            int secs = h * 3600 + m * 60 + s;
+
+            registrationSeconds.push_back(make_pair(secs,false));
         }
         ip.close(); //closing the file
         no_of_users--;
@@ -335,10 +362,6 @@ int main()
     }
     else
         cout << "Unable to open file"; //if the file is not open output
-
-    //Start editing the code form here onwards if needed.....
-
-    //To push the pair into the output.txt file
 
     // To get the key value pairs of the passed username in the function getinfo()
     map<string, string> M = getinfo(username, "codeogeek");
@@ -348,9 +371,10 @@ int main()
         
         int x;
         cout << "Input 1 for Aayushi's task:\n";
-        cout << "Input 2 for Shweta's task:\n";
-        cout << "Input 3 for Megha's task:\n";
-        cout << "Input 4 for Arpit's task:\n";
+        cout << "Input 2 for Shivani's task:\n";
+        cout << "Input 3 for Shweta's task:\n";
+        cout << "Input 4 for Megha's task:\n";
+        cout << "Input 5 for Arpit's task:\n";
         cout<< "Input -1 to exit from the program\n";
         cin >> x;
         switch (x)
@@ -363,23 +387,28 @@ int main()
             break;
         case 2:
             delete_content();
-            ShwetaTask();
+            ShivaniTask();
             cout << "See output.txt for the output..\n" << endl;
             cout<<"------------------\n";
             break;
         case 3:
             delete_content();
-            MeghaTask();
+            ShwetaTask();
             cout << "See output.txt for the output..\n" << endl;
             cout<<"------------------\n";
             break;
         case 4:
             delete_content();
+            MeghaTask();
+            cout << "See output.txt for the output..\n" << endl;
+            cout<<"------------------\n";
+            break;
+        case 5:
+            delete_content();
             ArpitTask();
             cout << "See output.txt for the output..\n" << endl;
             cout<<"------------------\n";
             break;
-        
         case -1:
             exit(-1);
             break;
@@ -387,11 +416,6 @@ int main()
             cout << "OOPS wrong input..\n" << endl;
             cout<<"------------------\n";
         }
-    }
-
-    for (auto it = M.begin(); it != M.end(); ++it)
-    {
-        //   cout<<it->first <<" : "<<it->second<<endl;
     }
 
     return 0;
