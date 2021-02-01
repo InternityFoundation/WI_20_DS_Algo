@@ -1,0 +1,49 @@
+Timestamp,Username,FaceoffId,Fullname,College,Semester,Company,DSlevel(Beginner(B)/Mediocre(M)/Expert(E)),City
+26 Jan 2021 11:11:12,codeogeek,26Jan21,Sunil kumar,SRMS,8,LTI,M,Bareilly
+26 Jan 2021 11:13:21,codeo,26Jan21,Sudheer kumar,Srms,8,LTI,B,Agra
+26 Jan 2021 11:23:21,rdeo,26Jan21,Sunil kumar,Shri Ram Murti Smarak College of Engg. and Tech,8,LTI,B,Chennai
+26 Jan 2021 11:24:21,edeo,26Jan21,Dolu,SRMS CET,8,LTI,E,Goa
+26 Jan 2021 11:25:21,sodeo,26Jan21,Bhaiya ji,SRMS,8,LTI,B,Pune
+27 Jan 2021 23:56:11,Hiticodes,27Jan21,Hitika Rajesh kumar,JSSATE,3,Student,B,Bengaluru
+15 Jan 2021 12:45:11,slowmoritu,15Jan21,Ritu Singh Murmu,MIT,6,Student,M,Kota
+27 Jan 2021 12:37:15,RitikCoder,27Jan21,Ritik Sharma,GRMT,2,Student,M,Badaun
+27 Jan 2021 09:35:56,Bhoslebhai,27Jan21,Swaraj bhosle,Amity University,4,Student,M,Noida
+27 Jan 2021 10:45:11,Shycoder,27Jan21,Aditya Agarwaal,jssate,1,Student,M,Moradabad
+27 Jan 2021 12:36:47,Doorbuster11,27Jan21,Abhijeet Sonker,DTU,7,Student,M,Noida
+27 Jan 2021 12:36:47,zubankesari,27Jan21,Rajesh singh,NSUT,6,Student,E,New Delhi
+12 Jan 2021 06:11:33,sagedead,12Jan21,Rajesh singh,dtu,3,Student,E,New Delhi
+27 Jan 2021 12:34:22,devil1321,27Jan21,Shri venkateshan,NITA,6,Student,E,Allahabad
+27 Jan 2021 06:36:47,Gujjubhai21,27Jan21,Shivam agarwaal,IIITA,4,Student,E,Allahabad
+11 Jan 2021 1:03:21,Uniqueuser1,11Jan21,Rajesh Sharma,DTU,5,Student,E,Kolkata
+11 Jan 2021 1:11:39,Uniqueuser2,11Jan21,Raju Sharma,dtu,4,Student,E,Kolkata
+11 Jan 2021 1:11:40,Uniqueuser3,11Jan21,Ritesh Sharma,NSUT,4,Student,E,Kolkata
+11 Jan 2021 1:12:65,Uniqueuser4,11Jan21,Hritik Sharma,NSUt,5,Student,E,Kolkata
+11 Jan 2021 1:13:06,Uniqueuser5,11Jan21,Roli Sharma,DMAT,3,Student,M,Kolkata
+11 Jan 2021 1:14:34,Uniqueuser6,11Jan21,Romlal Sharma,SMAT,3,Student,M,Kolkata
+11 Jan 2021 1:15:56,Uniqueuser7,11Jan21,Regex Sharma,NITA,8,Student,E,Kolkata
+11 Jan 2021 1:16:28,Uniqueuser8,11Jan21,Wolf Sharma,NITAgt,8,Student,B,Kolkata
+11 Jan 2021 1:22:18,Uniqueuser9,11Jan21,alpha Sharma,NIT jammu,8,Student,B,Kolkata
+11 Jan 2021 1:43:55,Uniqueuser10,11Jan21,Eeta Sharma,NIT W,5,Student,E,Kolkata
+11 Jan 2021 1:53:43,Uniqueuser11,11Jan21,gamma Sharma,NIT Rorkela,3,Student,M,Kolkata
+11 Jan 2021 2:59:17,Uniqueuser12,11Jan21,Gurbachan Sharma,IIT D,5,Student,M,Kolkata
+11 Jan 2021 5:52:21,Uniqueuser13,11Jan21,Molbachan Sharma,IIT Delhi,1,Student,B,Kolkata
+11 Jan 2021 6:14:31,Uniqueuser14,11Jan21,Radheshyam Sharma,Indian insstitute of information technology Delhi,5,Student,B,Kolkata
+11 Jan 2021 6:17:51,Uniqueuser15,11Jan21,Gagan Sharma,Indian insstitute of information technology Guwahati,7,Student,M,Kolkata
+11 Jan 2021 7:02:07,Uniqueuser16,11Jan21,Gaganlal Sharma,Indian insstitute of information technology Delhi,5,Student,M,Kolkata
+11 Jan 2021 7:05:15,Uniqueuser17,11Jan21,Gaganlalpreet Sharma,Indian insstitute of information technology Kanchipuram,4,Student,B,Kolkata
+11 Jan 2021 7:17:13,Uniqueuser18,11Jan21,Gurpreet Sharma,Indian insstitute of technology Kanpur,5,Student,B,Kolkata
+11 Jan 2021 8:58:42,Uniqueuser19,11Jan21,Harpreet Sharma,Indian insstitute of technology Kharagpur,2,Student,E,Kolkata
+11 Jan 2021 9:00:27,Uniqueuser20,11Jan21,Jaspreet Sharma,Indian insstitute of technology Bombay,2,Student,M,Kolkata
+11 Jan 2021 11:17:23,Uniqueuser21,11Jan21,tellpreet Sharma,Indian insstitute of technology Jammu,4,Student,M,Kolkata
+11 Jan 2021 9:39:41,Uniqueuser22,11Jan21,Askpreet Sharma,Indian insstitute of technology Dhanbad,5,Student,B,Kolkata
+11 Jan 2021 9:58:25,Uniqueuser23,11Jan21,Listenpreet Sharma,Indian insstitute of technology Delhi,2,Student,B,Kolkata
+11 Jan 2021 10:05:26,Uniqueuser24,11Jan21,Simran Sharma,Indian insstitute of technology Kanpur,6,Student,E,Kolkata
+11 Jan 2021 10:05:27,Uniqueuser25,11Jan21,Jessica Sharma,Indian insstitute of technology Delhi,5,Student,E,Kolkata
+11 Jan 2021 10:17:03,Uniqueuser26,11Jan21,Jeff Sharma,IIIT A,7,Student,B,Kolkata
+11 Jan 2021 10:06:20,Uniqueuser27,11Jan21,Big smoke Sharma,IIIT D,7,Student,E,Kolkata
+11 Jan 2021 10:28:43,Uniqueuser28,11Jan21,Carl johnson Sharma,IIIT Delhi,7,Student,E,Kolkata
+11 Jan 2021 10:09:27,Uniqueuser29,11Jan21,Rakesh Sharma,IIIT Allahabad,5,Student,B,Kolkata
+11 Jan 2021 10:33:14,Uniqueuser30,11Jan21,Gaurav Sharma,NIT Allahabad,5,Student,B,Kolkata
+11 Jan 2021 10:09:33,Uniqueuser31,11Jan21,Raju Sharma,NIT Agartala,5,Student,E,Kolkata
+11 Jan 2021 10:18:31,Uniqueuser32,11Jan21,Chutki Sharma,NIT gandhinagar,8,Student,E,Kolkata
+11 Jan 2021 10:41:36,Uniqueuser33,11Jan21,Mastram Sharma,NIT Mareilly,4,Student,M,Kolkata
