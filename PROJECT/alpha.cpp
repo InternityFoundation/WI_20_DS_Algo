@@ -129,12 +129,9 @@ void aayushiTask()
         full.pop_back();
         string last3 = full.back();
         full.pop_back();
+        write_pair(last3,last2);
         // cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
     }
-}
- 
-void ShivaniTask(){
-    
 }
 
 void ShwetaTask()
@@ -183,6 +180,64 @@ void ShwetaTask()
                 break;
             }
         }
+    }
+}
+
+void MeghaTask(){
+    vector<string> B;
+    vector<string> M;
+    vector<string> E;
+
+    for(int i = 0; i < no_of_users; i++)
+        {
+       if(dslevel[i] == "B")
+       {
+           B.push_back(username[i]);
+       }
+       else if(dslevel[i] == "M")
+       {
+           M.push_back(username[i]);
+       }
+       else
+       {
+           E.push_back(username[i]);
+       }
+    }
+
+    shuffle(B.begin(),B.end(), mt19937(random_device()()));
+    shuffle(M.begin(),M.end(), mt19937(random_device()()));
+    shuffle(E.begin(),E.end(), mt19937(random_device()()));
+
+    vector<string> full;
+    full.reserve(B.size() + M.size() + E.size());
+    full.insert( full.end(), B.begin(), B.end() );
+    full.insert( full.end(), M.begin(), M.end() );
+    full.insert( full.end(), E.begin(), E.end() );
+
+    if(full.size()%2 == 0)
+    {
+        for (int i = 0; i < full.size(); i=i+2)
+        {
+            write_pair(full[i],full[i+1]);
+            // cout << "{" << full[i] << ", " << full[i + 1] << "}" << endl;
+        }
+    }
+    else
+        {
+        for (int i = 0; i < full.size() - 3; i=i+2)
+        {
+            write_pair(full[i],full[i+1]);
+            // cout << "{" << full[i] << ", "  << full[i+1] << "}" << endl;
+        }
+
+        string last1 = full.back();
+        full.pop_back();
+        string last2 = full.back();
+        full.pop_back();
+        string last3 = full.back();
+        full.pop_back();
+        write_pair(last3,last2);
+        // cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
     }
 }
 
@@ -248,8 +303,9 @@ int main()
         
         int x;
         cout << "Input 1 for Aayushi's task:\n";
-        cout << "Input 2 for Aayushi's task:\n";
-        cout << "Input 3 for Shweta's task:\n";
+        cout << "Input 2 for Shweta's task:\n";
+        cout << "Input 3 for Megha's task:\n";
+        cout<< "Input -1 to exit from the program\n";
         cin >> x;
         switch (x)
         {
@@ -260,14 +316,14 @@ int main()
             break;
         case 2:
             delete_content();
-            ShivaniTask();
+            ShwetaTask();
             cout << "See output.txt for the output..\n" << endl;
             break;
         case 3:
             delete_content();
-            ShwetaTask();
+            MeghaTask();
             cout << "See output.txt for the output..\n" << endl;
-            break;    
+            break;
         case -1:
             exit(-1);
             break;

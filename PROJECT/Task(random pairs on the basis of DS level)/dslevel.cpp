@@ -1,6 +1,15 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <sstream>
+#include <vector>
+#include <fstream>
+#include <map>
 #include <random>
+#include <algorithm>
+#include <climits>
+#include<cstring>
 
-#include "bits/stdc++.h"
 using namespace std;
 
 int main()
