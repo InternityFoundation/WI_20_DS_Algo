@@ -75,9 +75,25 @@ int main()
     shuffle(U.begin(),U.end(), mt19937(random_device()()));
 
 
+    vector<string> res;
+
+    srand(time(0));
+    for (int i = U.size() - 1; i > 0; i--)
+   {
+	  int n = rand() % (i + 1);
+	  swap( U[i], U[n] );
+
+   }
+     for(int i = 0; i < no_of_users; i++)
+        {
+
+           res.push_back(U[i]);
+        }
+
+
     vector<string> full;
-    full.reserve(U.size());
-    full.insert( full.end(), U.begin(), U.end() );
+    full.reserve(res.size());
+    full.insert( full.end(), res.begin(), res.end() );
     if(full.size()%2 == 0)
     {
         for (int i = 0; i < full.size(); i=i+2)
@@ -101,5 +117,8 @@ int main()
         cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
     }
 
+
+
     return 0;
 }
+
