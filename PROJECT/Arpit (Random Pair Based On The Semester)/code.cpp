@@ -32,7 +32,7 @@ int main()
     string v1,v2,v3,v4,v5,v6,v7,v8,v9;
     int no_of_users = 0;
 
-    ifstream ip("./input2.txt");
+    ifstream ip("./input.txt");
     if (ip.is_open())
     {
         string line;
@@ -102,7 +102,7 @@ int main()
                     int diff = abs(stoi(semester[i]) - stoi(semester[j]));
                     if(diff <= 3 && diff >= minDiff){ //trying to find a pair with biggest semester difference and satisfies the condition
                         idx = j;
-                        minDiff = diff;
+                        //minDiff = diff;
                         flag = true;
                     }
 
@@ -118,9 +118,9 @@ int main()
             hash[i] = true;
             hash[idx] = true;
             cout << "{ ";
-            cout <<  username[i] << "(semester: " << semester[i] << ")";
+            cout << fullname[i]<< ":" << username[i] << "(semester: " << semester[i] << ")";
             cout << ", ";
-            cout << username[idx] << "(semester: " << semester[idx] << ")";
+            cout << fullname[idx]<< ":"<< username[idx] << "(semester: " << semester[idx] << ")";
             cout << "}";
             cout << endl;
         }
