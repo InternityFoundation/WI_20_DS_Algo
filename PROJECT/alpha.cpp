@@ -202,6 +202,7 @@ void ShivaniTask()
 
     for(int i=0;i<pairs.size()-2;i=i+2)
     {
+        write_pair(pairs[i],pairs[i+1]);
         cout<<"{"<<pairs[i]<<","<<pairs[i+1]<<"}\n";
     }
     cout<<"\n";
