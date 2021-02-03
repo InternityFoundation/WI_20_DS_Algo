@@ -267,33 +267,31 @@ void MeghaTask()
     vector<string> B;
     vector<string> M;
     vector<string> E;
-
-    for (int i = 0; i < no_of_users; i++)
-    {
-        if (dslevel[i] == "B")
+    cout<<no_of_users;
+    for(int i = 0; i < no_of_users; i++)
         {
-            B.push_back(username[i]);
-        }
-        else if (dslevel[i] == "M")
-        {
-            M.push_back(username[i]);
-        }
-        else
-        {
-            E.push_back(username[i]);
-        }
+       if(dslevel[i] == "B")
+       {
+           B.push_back(username[i]);
+       }
+       else if(dslevel[i] == "M")
+       {
+           M.push_back(username[i]);
+       }
+       else
+       {
+           E.push_back(username[i]);
+       }
     }
-
-    shuffle(B.begin(), B.end(), mt19937(random_device()()));
-    shuffle(M.begin(), M.end(), mt19937(random_device()()));
-    shuffle(E.begin(), E.end(), mt19937(random_device()()));
-
+    shuffle(B.begin(),B.end(), mt19937(random_device()()));
+    shuffle(M.begin(),M.end(), mt19937(random_device()()));
+    shuffle(E.begin(),E.end(), mt19937(random_device()()));
     vector<string> full;
     full.reserve(B.size() + M.size() + E.size());
-    full.insert(full.end(), B.begin(), B.end());
-    full.insert(full.end(), M.begin(), M.end());
-    full.insert(full.end(), E.begin(), E.end());
-
+    full.insert( full.end(), B.begin(), B.end() );
+    full.insert( full.end(), M.begin(), M.end() );
+    full.insert( full.end(), E.begin(), E.end() );
+    
     if (full.size() % 2 == 0)
     {
         for (int i = 0; i < full.size(); i = i + 2)
