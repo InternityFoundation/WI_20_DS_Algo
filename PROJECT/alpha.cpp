@@ -21,13 +21,28 @@ vector<string> semester;
 vector<string> company;
 vector<string> dslevel;
 vector<string> city;
-vector<pair<int, bool>> registrationSeconds;
+vector<pair<int,string>> dataa;
+vector<int> t1;
 
 int no_of_users = 0;
 
 void write_pair(string user1, string user2)
 {
     string s = "{" + user1 + "," + user2 + "}\n";
+    ofstream op;
+    op.open("output.txt", ios::app);
+    if (op.is_open())
+    {
+        op << s;
+    }
+    else
+    {
+        cout << "Not able to open output.txt";
+    }
+    op.close();
+}
+void write_three(string user1,string user2,string user3){
+    string s = "{" + user1 + "," + user2 + "," + user3 + "}\n";
     ofstream op;
     op.open("output.txt", ios::app);
     if (op.is_open())
@@ -99,13 +114,30 @@ void ayushiTask()
 {
     // 1. Read sheet, pick username, create random pairs, return the names of the random pairs. -- Ayushi
     vector<string> U;
-    for (int i = 0; i < no_of_users; i++)
-    {
 
-        U.push_back(username[i]);
-    }
+    for(int i = 0; i < no_of_users; i++)
+        {
 
-    shuffle(U.begin(), U.end(), mt19937(random_device()()));
+           U.push_back(username[i]);
+       }
+
+    shuffle(U.begin(),U.end(), mt19937(random_device()()));
+
+
+    vector<string> res;
+
+    srand(time(0));
+    for (int i = U.size() - 1; i > 0; i--)
+   {
+	  int n = rand() % (i + 1);
+	  swap( U[i], U[n] );
+
+   }
+     for(int i = 0; i < no_of_users; i++)
+        {
+
+           res.push_back(U[i]);
+        }
 
     vector<string> full;
     full.reserve(U.size());
@@ -115,7 +147,7 @@ void ayushiTask()
         for (int i = 0; i < full.size(); i = i + 2)
         {
             write_pair(full[i], full[i + 1]);
-            // cout << "{" << full[i] << ", " << full[i + 1] << "}" << endl;
+            cout << "{" << full[i] << ", " << full[i + 1] << "}" << endl;
         }
     }
     else
@@ -123,7 +155,7 @@ void ayushiTask()
         for (int i = 0; i < full.size() - 3; i = i + 2)
         {
             write_pair(full[i], full[i + 1]);
-            // cout << "{" << full[i] << ", "  << full[i+1] << "}" << endl;
+            cout << "{" << full[i] << ", "  << full[i+1] << "}" << endl;
         }
         string last1 = full.back();
         full.pop_back();
@@ -131,36 +163,54 @@ void ayushiTask()
         full.pop_back();
         string last3 = full.back();
         full.pop_back();
-        write_pair(last3, last2);
-        // cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
+        write_three(last3, last2, last1);
+        cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
     }
 }
 
 void ShivaniTask()
 {
     // 2. Read sheet, pick usernames, create random pairs based on the time of registration with a difference of more than 15 minutes -- Shivani
-    for (auto &p : registrationSeconds)
-        p.second = false;
-    for (int i = 0; i < registrationSeconds.size(); i++)
+        for(int i=0;i<t1.size();i++)
     {
-        for (int j = 0; j < registrationSeconds.size(); j++)
+        dataa.push_back({t1[i],username[i]});
+    } 
+    vector<string> pairs,single;
+
+    for(int i=0;i<dataa.size()-1;i++)
+    {
+        for(int j=1;j<dataa.size();j++)
         {
-            if (!registrationSeconds[j].second && registrationSeconds[i].first + 900 >= registrationSeconds[j].first && i != j)
+            if(dataa[j].first==0 || dataa[i].first==0)
             {
-                registrationSeconds[j].second = true;
-                registrationSeconds[i].second = true;
-                write_pair(username[i], username[j]);
-                // cout << "{ " << username[i] << ", " << username[j] << "}" << endl;
+                continue;
+            }
+            if(dataa[i].first - dataa[j].first>=900)
+            {
+                pairs.push_back(dataa[i].second);
+                pairs.push_back(dataa[j].second);
+                dataa[i].first=0;
+                dataa[j].first=0;
                 break;
+            }
+            else if(j==dataa.size()-1)
+            {
+                single.push_back(dataa[i].second);
             }
         }
     }
+
+    for(int i=0;i<pairs.size()-2;i=i+2)
+    {
+        cout<<"{"<<pairs[i]<<","<<pairs[i+1]<<"}\n";
+    }
+    cout<<"\n";
 }
 
 void ShwetaTask()
 {
     // 3. Read sheet, pick usernames, create random pairs based on the college such that no same college student should fight with each other.
-    //  Note: This needs an additional task of cleansing the data for the college name (Case-sensistive) Shweta
+    //  Note: This needs an additional task of cleansing the dataa for the college name (Case-sensistive) Shweta
 
     for (auto &i : college)
     {
@@ -200,7 +250,7 @@ void ShwetaTask()
             if (college[i] != college[j])
             {
                 write_pair(username[i], username[j]);
-                // cout << username[i] << " " << username[j] << endl;
+                cout << username[i] << " " << username[j] << endl;
                 vis[j] = true;
                 vis[i] = true;
                 break;
@@ -248,7 +298,7 @@ void MeghaTask()
         for (int i = 0; i < full.size(); i = i + 2)
         {
             write_pair(full[i], full[i + 1]);
-            // cout << "{" << full[i] << ", " << full[i + 1] << "}" << endl;
+            cout << "{" << full[i] << ", " << full[i + 1] << "}" << endl;
         }
     }
     else
@@ -256,7 +306,7 @@ void MeghaTask()
         for (int i = 0; i < full.size() - 3; i = i + 2)
         {
             write_pair(full[i], full[i + 1]);
-            // cout << "{" << full[i] << ", "  << full[i+1] << "}" << endl;
+            cout << "{" << full[i] << ", "  << full[i+1] << "}" << endl;
         }
 
         string last1 = full.back();
@@ -265,8 +315,8 @@ void MeghaTask()
         full.pop_back();
         string last3 = full.back();
         full.pop_back();
-        write_pair(last3, last2);
-        // cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
+        write_three(last3, last2, last1);
+        cout << "{" << last3 << ", " << last2  <<  ", " << last1 << " }" << endl;
     }
 }
 
@@ -314,13 +364,13 @@ void ArpitTask()
         {
             hash[i] = true;
             hash[idx] = true;
-            write_pair(username[i], username[idx]);
-            // cout << "{ ";
-            // cout <<  username[i] << "(semester: " << semester[i] << ")";
-            // cout << ", ";
-            // cout << username[idx] << "(semester: " << semester[idx] << ")";
-            // cout << "}";
-            // cout << endl;
+            write_pair(fullname[i], fullname[idx]);
+            cout << "{ ";
+            cout << fullname[i]<< ":" << username[i] << "(semester: " << semester[i] << ")";
+            cout << ", ";
+            cout << fullname[idx]<< ":"<< username[idx] << "(semester: " << semester[idx] << ")";
+            cout << "}";
+            cout << endl;
         }
     }
 }
@@ -371,12 +421,11 @@ int main()
             string mon;
             sscanf(v1.c_str(), "%d %s %d %d:%d:%d", &d, &mon, &yr, &h, &m, &s);
             int secs = h * 3600 + m * 60 + s;
-
-            registrationSeconds.push_back(make_pair(secs, false));
+            t1.push_back(secs);
         }
         ip.close(); //closing the file
         no_of_users--;
-        // cout << "Number of entries: " << no_of_users << endl;
+        cout << "Number of entries: " << no_of_users << endl;
     }
     else
         cout << "Unable to open file"; //if the file is not open output
@@ -400,7 +449,9 @@ int main()
         case 1:
             // 1. Read sheet, pick username, create random pairs, return the names of the random pairs. -- Ayushi
             delete_content();
+            cout<<endl;
             ayushiTask();
+            cout<<endl;
             cout << "See output.txt for the output..\n"
                  << endl;
             cout << "------------------\n";
@@ -408,16 +459,20 @@ int main()
         case 2:
             // 2. Read sheet, pick usernames, create random pairs based on the time of registration with a difference of more than 15 minutes -- Shivani
             delete_content();
+            cout<<endl;
             ShivaniTask();
+            cout<<endl;
             cout << "See output.txt for the output..\n"
                  << endl;
             cout << "------------------\n";
             break;
         case 3:
             // 3. Read sheet, pick usernames, create random pairs based on the college such that no same college student should fight with each other.
-            //  Note: This needs an additional task of cleansing the data for the college name (Case-sensistive) Shweta
+            //  Note: This needs an additional task of cleansing the dataa for the college name (Case-sensistive) Shweta
             delete_content();
+            cout<<endl;
             ShwetaTask();
+            cout<<endl;
             cout << "See output.txt for the output..\n"
                  << endl;
             cout << "------------------\n";
@@ -426,7 +481,9 @@ int main()
             // 4. Read sheet, pick usernames, create random pairs based on the level of DS, they know.
             // Note: No different DS level student should match with another level -- Megha
             delete_content();
+            cout<<endl;
             MeghaTask();
+            cout<<endl;
             cout << "See output.txt for the output..\n"
                  << endl;
             cout << "------------------\n";
@@ -435,7 +492,9 @@ int main()
             // 6. Create random pair based on the semester of a student. The difference of the semester should not be greater than 4.
             // For eg. student A of 1st semester cannot pair with student B of 5th Semester but can pair with student C of 3rd Semester -- Arpit
             delete_content();
+            cout<<endl;
             ArpitTask();
+            cout<<endl;
             cout << "See output.txt for the output..\n"
                  << endl;
             cout << "------------------\n";
